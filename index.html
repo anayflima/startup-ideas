@@ -1,137 +1,173 @@
 <!doctype html>
 <html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='robots' content='noindex,nofollow'><title>Startup ideas</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f5f7fb;color:#1d2433;line-height:1.5}
-header{background:#13203f;color:#fff;padding:18px 16px 0;position:sticky;top:0;z-index:5}
-header h1{margin:0;font-size:22px}header .sub{margin:4px 0 12px;color:#b9c6e4;font-size:14px}
-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
-nav button{flex:0 0 auto;border:0;border-radius:18px;padding:8px 14px;background:#24345f;color:#dfe7fb;font-size:14px;cursor:pointer}
-nav button.on{background:#4f8cff;color:#fff;font-weight:600}
-main{max-width:920px;margin:0 auto;padding:16px}
-section{display:none}section.on{display:block}
-h2{font-size:20px;margin:6px 0 12px}h3{font-size:16px;margin:0 0 8px;color:#13203f}
-.card{background:#fff;border-radius:12px;padding:14px 16px;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.lead{font-size:17px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:10px;font-weight:600}
-.p-lead{background:#dff5e6;color:#17663a}.p-park{background:#fdf0d5;color:#8a5a00}.p-ref{background:#e4ecff;color:#244aa5}
-.pro li::marker{content:'+ ';color:#17663a;font-weight:700}.con li::marker{content:'- ';color:#b3261e;font-weight:700}
-ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
-.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #e5e9f2;padding:7px 8px;text-align:left;vertical-align:top}th{background:#eef3fb;font-weight:600}
-.note{font-size:13px;color:#5b6478}.lnk{color:#2f6fe4;cursor:pointer;text-decoration:underline}
-ol.steps>li{margin:8px 0}footer{text-align:center;font-size:12px;color:#7b8397;padding:20px}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#141b2d;--mut:#5d6679;--line:#e6e9f0;--acc:#4f46e5;--acc2:#eef2ff;--good:#0f9d58;--bad:#d93025;--warn:#b26a00}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.top{background:linear-gradient(135deg,#111a3a,#3730a3 60%,#6d28d9);color:#fff;padding:24px 18px 20px}.top .in{max-width:1100px;margin:0 auto}.top h1{margin:0;font-size:27px;letter-spacing:-.02em}.top p{margin:6px 0 14px;color:#d9dcff;max-width:720px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:9px 14px;font-weight:600;font-size:14px;cursor:pointer;background:var(--acc);color:#fff;font-family:inherit}.btn:disabled{opacity:.6}.btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3)}.btn.lite{background:var(--acc2);color:var(--acc)}
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:22px;padding:20px 16px}
+nav{position:sticky;top:16px;align-self:start;display:flex;flex-direction:column;gap:2px}nav button{text-align:left;border:0;background:none;padding:9px 12px;border-radius:9px;font-size:14px;color:var(--mut);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}nav button:hover{background:#eceef5}nav button.on{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(20,27,45,.08)}nav .sep{height:1px;background:var(--line);margin:8px 6px}
+.cnt{background:var(--acc);color:#fff;border-radius:9px;font-size:11px;padding:0 7px;line-height:18px;margin-left:6px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr;padding:0 12px 20px;gap:10px}nav{position:sticky;top:0;z-index:5;flex-direction:row;overflow-x:auto;background:var(--bg);padding:10px 12px;margin:0 -12px;gap:6px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 13px}nav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}nav .sep{display:none}}
+section{display:none;animation:f .2s}section.on{display:block}@keyframes f{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+h2{font-size:22px;margin:4px 0;letter-spacing:-.01em}.lede{color:var(--mut);margin:0 0 16px}h3{font-size:15px;margin:0 0 8px}.sub{margin:20px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 14px}.card p{margin:6px 0}.hero{font-size:17px;border-left:4px solid var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.grid .card{margin:0}.grid+.card,.grid+.grid{margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 14px}.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}.stat b{display:block;font-size:22px;letter-spacing:-.02em;color:var(--acc)}.stat span{color:var(--mut);font-size:13px}
+.idea{cursor:pointer;transition:.15s}.idea:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 6px 18px rgba(79,70,229,.1)}.go{color:var(--acc);font-weight:600;font-size:14px}.add{border-style:dashed;background:#fafbff}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}ul.pro,ul.con{list-style:none;padding:0}ul.pro li,ul.con li{padding-left:24px;position:relative}ul.pro li:before{content:'✓';position:absolute;left:0;color:var(--good);font-weight:700}ul.con li:before{content:'!';position:absolute;left:5px;color:var(--bad);font-weight:800}
+.pros{border-top:3px solid var(--good)}.cons{border-top:3px solid var(--bad)}.flags{border-top:3px solid var(--warn)}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:600}tr:last-child td{border-bottom:0}
+.note{font-size:13px;color:var(--mut)}.lnk{color:var(--acc);cursor:pointer;font-weight:500}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:6px 0}ol.steps li{counter-increment:s;padding-left:38px;position:relative;margin:10px 0}ol.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--acc2);color:var(--acc);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}.hd h3{margin:0}
+.fl{border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin:8px 0;background:#fffdf7}.tx{margin-top:4px;white-space:pre-wrap}.reply{margin-top:6px;font-size:13px;background:var(--acc2);color:#2e2a8a;border-radius:8px;padding:6px 9px}.meta{font-size:12px;color:var(--mut);margin-top:4px}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px}.s-new{background:#fff4e5;color:var(--warn)}.s-wip{background:var(--acc2);color:var(--acc)}.s-done{background:#e6f4ea;color:var(--good)}
+form label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}select,textarea{width:100%;font:inherit;border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink)}textarea{min-height:120px;resize:vertical}
+.seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 13px;cursor:pointer;font-size:13px;font-family:inherit;color:var(--ink)}.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.modal{position:fixed;inset:0;background:rgba(15,20,40,.55);display:none;align-items:flex-start;justify-content:center;z-index:30;overflow:auto;padding:16px}.modal.on{display:flex}.modal .card{max-width:560px;width:100%;margin-top:30px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;display:none;z-index:40;max-width:90%}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:6px 16px 30px}
 </style></head><body>
-<header><h1>Startup ideas</h1><p class='sub'>A company of companies: we build products inside, AI helps run them. Updated 15 Nov 2026</p>
-<nav id='nav'>
-<button data-t='sum'>Summary</button><button data-t='cc'>Company of companies</button><button data-t='pb'>Playbook</button><button data-t='comp'>Who does this</button><button data-t='aws'>AWS for agents</button><button data-t='tcc'>The Company Company</button><button data-t='notes'>Voice notes</button><button data-t='log'>Updates</button>
-</nav></header>
-<main>
+<div class=top><div class=in><h1>Startup ideas</h1><p>A company of companies: we build products inside one company and AI helps run them. Shared notes for Ana and Gohar, kept up to date by Blue.</p><div class=acts><button class=btn data-add=idea>+ Add an idea</button><button class='btn ghost' data-add=flag data-idea=cc>Flag a risk</button><button class='btn ghost' data-t=inbox>Team inbox</button></div></div></div>
+<div class=wrap><nav id=nav>
+<button data-t=sum>Summary</button><button data-t=cc>Company of companies</button><button data-t=pb>Playbook</button><button data-t=comp>Who does this</button><button data-t=aws>AWS for agents</button><button data-t=tcc>The Company Company</button><div class=sep></div><button data-t=notes>Voice notes</button><button data-t=inbox>Team inbox<span class=cnt id=icnt style='display:none'>0</span></button><button data-t=log>Updates</button>
+</nav><main>
 
-<section id='sum'>
-<div class='card'><h3>The idea in one line</h3><p class='lead'>A venture-funded <b>company of companies</b>. We build several products <b>inside one company</b>, each aiming for millions (then tens of millions) in ARR, all running on one shared AI <b>company machine</b> for GTM, onboarding, support and ops. We keep the companies and we do not sell the machine.</p></div>
-<div class='grid'>
-<div class='card'><h3>Why now</h3><ul><li>Big, horizontal TAMs are exactly where the AI labs go next (a lab already shipped a Granola-type notes app). Focused markets are below their radar.</li><li>AI made building cheap. The bottleneck is now running a company: distribution, onboarding, support, ops. That is what the machine does.</li><li>We are funded, so we can run several bets in parallel instead of one at a time, hire a platform team early and buy companies sooner.</li></ul></div>
-<div class='card'><h3>Proof that it can work</h3><ul><li><b>Rippling</b> builds many products in parallel on one data layer: about $570M ARR (2025).</li><li><b>Bending Spoons</b> runs many brands on one shared stack: about $1.31B revenue (2025).</li><li><b>Zoho</b> runs 55+ apps on one platform: about $1.4B revenue.</li><li>Investors already back the model: Thrive Holdings ($3B+), General Catalyst Creation ($1.5B).</li></ul><p class='note'>Details in <span class='lnk' data-go='comp'>Who does this</span>.</p></div>
+<section id=sum><h2>Summary</h2><p class=lede>The big picture on one page. Open a tab for the details of each idea.</p>
+<div class='card hero'><b>The idea in one line.</b> A venture-funded <b>company of companies</b>. We build several products <b>inside one company</b>, each aiming for millions (then tens of millions) in ARR, all running on one shared AI <b>company machine</b> for GTM, onboarding, support and ops. We keep the companies and we don't sell the machine.</div>
+<div class=stats><div class=stat><b>3</b><span>ideas on the table</span></div><div class=stat><b>15</b><span>companies studied</span></div><div class=stat><b>5</b><span>stages in the draft playbook</span></div><div class=stat><b>$1B+</b><span>revenue at the biggest examples</span></div></div>
+<div class=grid>
+<div class=card><h3>Why now</h3><ul><li>Big, horizontal TAMs are exactly where the AI labs go next (a lab already shipped a Granola-type notes app). Focused markets are below their radar.</li><li>AI made building cheap. The bottleneck is now running a company: distribution, onboarding, support, ops. That is what the machine does.</li><li>We are funded, so we can run several bets in parallel, hire a platform team early and buy companies sooner.</li></ul></div>
+<div class=card><h3>Proof it can work</h3><ul><li><b>Rippling</b> builds many products in parallel on one data layer: about $570M ARR (2025).</li><li><b>Bending Spoons</b> runs many brands on one shared stack: about $1.31B revenue (2025).</li><li><b>Zoho</b> runs 55+ apps on one platform: about $1.4B revenue.</li><li>Investors back the model: Thrive Holdings ($3B+), General Catalyst Creation ($1.5B).</li></ul><p class=note>More in <span class=lnk data-go=comp>Who does this</span>.</p></div>
 </div>
-<div class='card'><h3>All ideas</h3><div class='tw'><table><tr><th>Idea</th><th>Status</th><th>Short verdict</th></tr>
-<tr><td><span class='lnk' data-go='cc'>Company of companies</span></td><td><span class='pill p-lead'>Lead idea</span></td><td>Our main direction. Many focused products, one machine, one company.</td></tr>
-<tr><td><span class='lnk' data-go='aws'>AWS for agent automations</span></td><td><span class='pill p-park'>Parked</span></td><td>Big TAM, labs already there. Only useful as the internal infrastructure of the machine.</td></tr>
-<tr><td><span class='lnk' data-go='tcc'>The Company Company</span></td><td><span class='pill p-ref'>Reference</span></td><td>Sells an agents-run-your-company layer to others. Validates the direction; we use it inside instead of selling it.</td></tr>
-</table></div></div>
-<div class='grid'>
-<div class='card'><h3>Top reasons for</h3><ul class='pro'><li>Many shots on goal; one failed product does not kill the company.</li><li>The machine compounds: every launch makes the next one cheaper and faster.</li><li>Avoids head-on fights with the labs by picking focused markets.</li></ul></div>
-<div class='card'><h3>Top risks</h3><ul class='con'><li>Distribution, not building, is the hard part. The machine speeds up execution, not finding demand.</li><li>Focus: several half-built products instead of one great one.</li><li>Investors still need a venture-size outcome: the portfolio must add up to $100M+ ARR.</li></ul></div>
+<h3 class=sub>All ideas</h3>
+<div class=grid>
+<div class='card idea' data-go=cc><h3>Company of companies</h3><p>Many focused products, one shared machine, one company and one cap table.</p><span class=go>Open &rarr;</span></div>
+<div class='card idea' data-go=aws><h3>AWS for agent automations</h3><p>Cloud that runs agents and automations for you. Big TAM and the labs are already there, so most useful as the machine's own infrastructure.</p><span class=go>Open &rarr;</span></div>
+<div class='card idea' data-go=tcc><h3>The Company Company</h3><p>Sells an agents-run-your-company layer to other companies. Shows the direction is real; we would use this kind of system inside instead of selling it.</p><span class=go>Open &rarr;</span></div>
+<div class='card idea add' data-add=idea><h3>+ Add an idea</h3><p>Write it here. Blue researches it, adds pros, cons and examples, and gives it its own tab.</p><span class=go>Add &rarr;</span></div>
 </div>
-<div class='card'><h3>Next steps</h3><ol><li>Pick 3 to 5 focused B2B markets to test first (filter in <span class='lnk' data-go='pb'>Playbook</span>).</li><li>Decide the first machine pieces to build: GTM machine, auto onboarding, self-healing support.</li><li>Decide: same buyer for all products (compound, like Rippling) or different markets (portfolio, like Bending Spoons)?</li><li>Talk to 2 or 3 operators of multi-product companies (lempire, saas.group, Bending Spoons alumni).</li></ol></div>
+<div class=grid>
+<div class='card pros'><h3>Top reasons for</h3><ul class=pro><li>Many shots on goal; one failed product does not kill the company.</li><li>The machine compounds: every launch makes the next one cheaper and faster.</li><li>Avoids head-on fights with the labs by picking focused markets.</li></ul></div>
+<div class='card cons'><h3>Top risks</h3><ul class=con><li>Distribution, not building, is the hard part. The machine speeds up execution, not finding demand.</li><li>Focus: several half-built products instead of one great one.</li><li>Investors still need a venture-size outcome: the portfolio must add up to $100M+ ARR.</li></ul></div>
+</div>
+<div class=card><h3>Next steps</h3><ol class=steps><li>Pick 3 to 5 focused B2B markets to test first (filter in <span class=lnk data-go=pb>Playbook</span>).</li><li>Decide the first machine pieces to build: GTM machine, auto onboarding, self-healing support.</li><li>Decide: same buyer for all products (compound, like Rippling) or different markets (portfolio, like Bending Spoons)?</li><li>Talk to 2 or 3 operators of multi-product companies (lempire, saas.group, Bending Spoons alumni).</li></ol></div>
 </section>
 
-<section id='cc'>
-<h2>Company of companies <span class='pill p-lead'>Lead idea</span></h2>
-<div class='card'><h3>What it is</h3><p>One company that builds and owns several products. Each product has its own brand and a small pod (2 to 3 people). A central team builds the <b>company machine</b>: the shared AI system that launches and runs every product. Humans do the 0 to 1 (pick the market, talk to customers, shape the product); the machine does the repeatable work. When a product shows product-market fit, it gets more people and money. Later, with cash flow, we also buy stagnant software companies and move them onto the machine (the Bending Spoons step).</p></div>
-<div class='card'><h3>How it differs from what exists</h3><div class='tw'><table><tr><th>Model</th><th>What they do</th><th>Our difference</th></tr>
+<section id=cc><h2>Company of companies</h2><p class=lede>One company that builds, owns and runs several products on a shared AI machine.</p>
+<div class=card><h3>What it is</h3><p>Each product has its own brand and a small pod (2 to 3 people). A central team builds the <b>company machine</b>: the shared AI system that launches and runs every product. Humans do the 0 to 1 (pick the market, talk to customers, shape the product); the machine does the repeatable work. When a product shows product-market fit, it gets more people and money. Later, with cash flow, we also buy stagnant software companies and move them onto the machine (the Bending Spoons step).</p></div>
+<div class=card><h3>How it differs from what exists</h3><div class=tw><table><tr><th>Model</th><th>What they do</th><th>Our difference</th></tr>
 <tr><td>Bootstrapped holding (Tiny, saas.group, Constellation)</td><td>Buy profitable small software, grow slowly from cash flow</td><td>We build first, in parallel, with venture money, so we move faster and can buy later</td></tr>
-<tr><td>Venture studio (Atomic, Hexa)</td><td>Launch startups, then spin each out with its own founders and cap table</td><td>Everything stays inside one company and one cap table, all on the same machine</td></tr>
-<tr><td>Compound startup (Rippling)</td><td>Many products for the same buyer on one data layer</td><td>Can be the same buyer or different markets; the shared asset is the operating machine, not only the data</td></tr>
-<tr><td>AI platform (The Company Company)</td><td>Sell agents-run-your-company software to other companies</td><td>We do not sell the platform; we make money from the companies it runs</td></tr>
+<tr><td>Venture studio (Atomic, Hexa)</td><td>Launch startups, then spin each out with its own founders and cap table</td><td>Everything stays inside one company and one cap table, on the same machine</td></tr>
+<tr><td>Compound startup (Rippling)</td><td>Many products for the same buyer on one data layer</td><td>Same buyer or different markets; the shared asset is the operating machine, not only the data</td></tr>
+<tr><td>AI platform (The Company Company)</td><td>Sell agents-run-your-company software to other companies</td><td>We don't sell the platform; we make money from the companies it runs</td></tr>
 </table></div></div>
-<div class='grid'>
-<div class='card'><h3>Pros</h3><ul class='pro'><li>Many shots on goal; we learn fast what works.</li><li>Funding lets us run several pods at once and hire a strong platform team early.</li><li>The machine is a compounding asset and a real moat.</li><li>Focused markets avoid the labs and big incumbents.</li><li>Fits us: ML, finance and PE exposure, and strong engineering and product.</li><li>Investors already fund this shape (Rippling, Bending Spoons, Thrive Holdings).</li><li>Later M&A engine: stagnant software sells for about 3.5 to 5.5x ARR.</li></ul></div>
-<div class='card'><h3>Cons and risks</h3><ul class='con'><li>Each product still needs its own PMF and its own channel.</li><li>Focus can split; lempire and Zoho grew one hit first, then added products.</li><li>The story to investors must add up to a venture outcome, not a set of lifestyle businesses.</li><li>Burn: several pods plus a platform team spend fast if the kill rules are soft.</li><li>Running many brands, legal entities and support queues adds overhead.</li><li>AI makes building cheap for everyone, so focused markets fill up faster too.</li></ul></div>
+<div class=grid>
+<div class='card pros'><h3>Pros</h3><ul class=pro><li>Many shots on goal; we learn fast what works.</li><li>Funding lets us run several pods at once and hire a strong platform team early.</li><li>The machine is a compounding asset and a real moat.</li><li>Focused markets avoid the labs and big incumbents.</li><li>Fits us: ML, finance and PE exposure, and strong engineering and product.</li><li>Investors already fund this shape (Rippling, Bending Spoons, Thrive Holdings).</li><li>Later M&amp;A engine: stagnant software sells for about 3.5 to 5.5x ARR.</li></ul></div>
+<div class='card cons'><h3>Cons and risks</h3><ul class=con><li>Each product still needs its own PMF and its own channel.</li><li>Focus can split; lempire and Zoho grew one hit first, then added products.</li><li>The story to investors must add up to a venture outcome, not a set of lifestyle businesses.</li><li>Burn: several pods plus a platform team spend fast if the kill rules are soft.</li><li>Many brands, legal entities and support queues add overhead.</li><li>AI makes building cheap for everyone, so focused markets fill up faster too.</li></ul></div>
 </div>
-<div class='card'><h3>Open questions</h3><ul><li>Same buyer (cross-sell, like Rippling or lempire) or unrelated markets (portfolio, like Bending Spoons)?</li><li>One brand or many brands under one parent?</li><li>How many pods at once: 3, 5 or 8?</li><li>When does M&A start: from day one, or only after the first products hit about $1M ARR?</li><li>How do we report it to investors: total ARR, cash flow, or per-product metrics?</li></ul></div>
+<div class=card><h3>Open questions</h3><ul><li>Same buyer (cross-sell, like Rippling or lempire) or unrelated markets (portfolio, like Bending Spoons)?</li><li>One brand or many brands under one parent?</li><li>How many pods at once: 3, 5 or 8?</li><li>When does M&amp;A start: from day one, or after the first products hit about $1M ARR?</li><li>How do we report it to investors: total ARR, cash flow, or per-product metrics?</li></ul></div>
+<div class='card flags'><div class=hd><h3>Red flags from the team</h3><button class='btn lite' data-add=flag data-idea=cc>+ Add</button></div><div data-flags=cc></div></div>
 </section>
 
-<section id='pb'>
-<h2>Playbook (draft)</h2>
-<div class='card'><h3>Idea filter: a market passes when</h3><ul><li>B2B buyers who already pay for software or services in this area.</li><li>A channel we can reach: a community, a marketplace, SEO, a clear outbound list.</li><li>Too focused for the labs to care, but big enough for $5M to $20M ARR.</li><li>Testable in 4 to 6 weeks with the machine.</li><li>Ideally fits our backgrounds or shares a buyer with another product.</li></ul></div>
-<div class='card'><h3>Stages and gates</h3><ol class='steps'><li><b>Explore (2 to 4 weeks):</b> 20+ customer conversations, a landing page from the machine, a waitlist or letters of intent.</li><li><b>Build (4 to 6 weeks):</b> MVP on shared auth, billing and onboarding; first paying users.</li><li><b>Prove (about 90 days):</b> kill if there are no paying customers or no MRR growth; keep the learnings in the machine.</li><li><b>Scale:</b> steady monthly MRR growth and good retention earn a bigger pod and budget.</li><li><b>Run:</b> the machine runs GTM, support and ops; humans focus on the next product.</li></ol></div>
-<div class='card'><h3>The company machine (shared pieces)</h3><ul><li>GTM machine: landing page, LinkedIn page, daily posts, outbound, ads.</li><li>Auto onboarding and product tours.</li><li>Self-healing support and ops agents.</li><li>Shared auth, billing, analytics and one dashboard across products.</li><li>A launch template, so every new product starts from the same base.</li></ul></div>
-<div class='card'><h3>Capital rules (illustrative, our assumptions)</h3><ul><li>Fixed budget per pod per stage; money follows the gates, not opinions.</li><li>Example at about $10M a year of spend: platform and machine team about $3 to 4M, 6 to 8 pods at about $0.5 to 0.8M each.</li><li>Buying companies later uses a hurdle rate, like Constellation (about 20 to 25% IRR).</li></ul><p class='note'>These are planning assumptions, not researched numbers.</p></div>
+<section id=pb><h2>Playbook (draft)</h2><p class=lede>How a new product would go from idea to running on the machine.</p>
+<div class=card><h3>Idea filter: a market passes when</h3><ul><li>B2B buyers already pay for software or services in this area.</li><li>There is a channel we can reach: a community, a marketplace, SEO, a clear outbound list.</li><li>Too focused for the labs to care, but big enough for $5M to $20M ARR.</li><li>Testable in 4 to 6 weeks with the machine.</li><li>Ideally fits our backgrounds or shares a buyer with another product.</li></ul></div>
+<div class=card><h3>Stages and gates</h3><ol class=steps><li><b>Explore (2 to 4 weeks):</b> 20+ customer conversations, a landing page from the machine, a waitlist or letters of intent.</li><li><b>Build (4 to 6 weeks):</b> MVP on shared auth, billing and onboarding; first paying users.</li><li><b>Prove (about 90 days):</b> kill if there are no paying customers or no MRR growth; keep the learnings in the machine.</li><li><b>Scale:</b> steady monthly MRR growth and good retention earn a bigger pod and budget.</li><li><b>Run:</b> the machine runs GTM, support and ops; humans move to the next product.</li></ol></div>
+<div class=grid>
+<div class=card><h3>The company machine</h3><ul><li>GTM machine: landing page, LinkedIn page, daily posts, outbound, ads.</li><li>Auto onboarding and product tours.</li><li>Self-healing support and ops agents.</li><li>Shared auth, billing, analytics and one dashboard across products.</li><li>A launch template, so every product starts from the same base.</li></ul></div>
+<div class=card><h3>Capital rules (our assumptions)</h3><ul><li>Fixed budget per pod per stage; money follows the gates, not opinions.</li><li>Example at about $10M a year of spend: platform and machine team about $3 to 4M, 6 to 8 pods at about $0.5 to 0.8M each.</li><li>Buying companies later uses a hurdle rate, like Constellation (about 20 to 25% IRR).</li></ul><p class=note>Planning assumptions, not researched numbers.</p></div>
+</div>
+<div class='card flags'><div class=hd><h3>Red flags from the team</h3><button class='btn lite' data-add=flag data-idea=pb>+ Add</button></div><div data-flags=pb></div></div>
 </section>
 
-<section id='comp'>
-<h2>Who does something similar</h2>
-<div class='card'><h3>Funded multi-product companies</h3><div class='tw'><table><tr><th>Company</th><th>Model</th><th>Size</th><th>What we take from it</th></tr>
-<tr><td>Rippling</td><td>Compound startup: HR, IT and finance products built in parallel on one data layer</td><td>$1.8B+ raised, about $570M ARR (2025), $16.8B valuation</td><td>Parallel products can be a venture story</td></tr>
-<tr><td>Bending Spoons</td><td>Buys mature brands (Evernote, WeTransfer, Vimeo, Eventbrite), moves them to a shared stack, small teams</td><td>About $2.7B of M&A in 2024-25; $710M equity plus $2.8B debt; about $1.31B revenue (2025)</td><td>The shared machine is the asset; debt can fund acquisitions</td></tr>
-<tr><td>Thrive Holdings</td><td>AI roll-up: buys services firms (accounting, IT) and embeds engineers to automate them</td><td>About $1B committed, then $2B raised in Aug 2026 at $12B</td><td>Investors pay for AI-run portfolios</td></tr>
-<tr><td>General Catalyst Creation</td><td>Incubates AI platforms that buy services businesses and automate 30 to 70% of the work</td><td>$1.5B fund</td><td>Same thesis from the investor side</td></tr>
-<tr><td>Atlassian, HubSpot, Zoho</td><td>Internal incubation (e.g. Atlassian Point A) on shared identity, billing and UI, then cross-sell</td><td>Zoho: 55+ apps, about $1.4B revenue, no VC</td><td>How to launch new products inside one company</td></tr>
-<tr><td>Studios (Atomic, Hexa, Forum Ventures)</td><td>Build startups in house, then spin them out</td><td>Atomic Fund IV $320M</td><td>Launch process; but we keep the companies</td></tr>
+<section id=comp><h2>Who does this</h2><p class=lede>Companies that already run many products or many companies.</p>
+<div class=card><h3>Funded multi-product companies</h3><div class=tw><table><tr><th>Company</th><th>Model</th><th>Size</th><th>What we take from it</th></tr>
+<tr><td><b>Rippling</b></td><td>Compound startup: HR, IT and finance products built in parallel on one data layer</td><td>$1.8B+ raised, about $570M ARR (2025), $16.8B valuation</td><td>Parallel products can be a venture story</td></tr>
+<tr><td><b>Bending Spoons</b></td><td>Buys mature brands (Evernote, WeTransfer, Vimeo, Eventbrite), moves them to a shared stack, small teams</td><td>About $2.7B of M&amp;A in 2024-25; $710M equity plus $2.8B debt; about $1.31B revenue (2025)</td><td>The shared machine is the asset; debt can fund acquisitions</td></tr>
+<tr><td><b>Thrive Holdings</b></td><td>AI roll-up: buys services firms (accounting, IT) and embeds engineers to automate them</td><td>About $1B committed, then $2B raised in Aug 2026 at $12B</td><td>Investors pay for AI-run portfolios</td></tr>
+<tr><td><b>General Catalyst Creation</b></td><td>Incubates AI platforms that buy services businesses and automate 30 to 70% of the work</td><td>$1.5B fund</td><td>Same thesis from the investor side</td></tr>
+<tr><td><b>Atlassian, HubSpot, Zoho</b></td><td>Internal incubation (e.g. Atlassian Point A) on shared identity, billing and UI, then cross-sell</td><td>Zoho: 55+ apps, about $1.4B revenue, no VC</td><td>How to launch new products inside one company</td></tr>
+<tr><td><b>Studios (Atomic, Hexa, Forum Ventures)</b></td><td>Build startups in house, then spin them out</td><td>Atomic Fund IV $320M</td><td>The launch process; but we keep the companies</td></tr>
 </table></div></div>
-<div class='card'><h3>Proof of the unit economics (bootstrapped)</h3><div class='tw'><table><tr><th>Company</th><th>Model</th><th>Size</th></tr>
-<tr><td>Constellation Software</td><td>Buys small vertical software, never sells, decentralized groups</td><td>$11.6B revenue (2025), 1,100+ units</td></tr>
-<tr><td>saas.group</td><td>Buys bootstrapped SaaS brands</td><td>25+ brands, over $100M ARR</td></tr>
-<tr><td>lempire</td><td>lemlist plus sister tools, cross-sold to the same users</td><td>About $40-45M ARR, 25-35% EBITDA</td></tr>
-<tr><td>37signals</td><td>Basecamp, HEY, ONCE</td><td>About $80M+ revenue, under 80 people</td></tr>
-<tr><td>Tiny</td><td>Holding of internet businesses (Dribbble, AeroPress)</td><td>About $300M in sales</td></tr>
-<tr><td>Pieter Levels</td><td>Portfolio of small products</td><td>About $2.5-3M ARR, no employees</td></tr>
-</table></div><p class='note'>Small SaaS at $1-10M ARR usually runs at 20-40% profit and sells for about 3.5-5.5x ARR. Numbers come from web searches and press reports; check them before quoting.</p></div>
+<div class=card><h3>Proof of the unit economics</h3><div class=tw><table><tr><th>Company</th><th>Model</th><th>Size</th></tr>
+<tr><td><b>Constellation Software</b></td><td>Buys small vertical software, never sells, decentralized groups</td><td>$11.6B revenue (2025), 1,100+ units</td></tr>
+<tr><td><b>saas.group</b></td><td>Buys bootstrapped SaaS brands</td><td>25+ brands, over $100M ARR</td></tr>
+<tr><td><b>lempire</b></td><td>lemlist plus sister tools, cross-sold to the same users</td><td>About $40-45M ARR, 25-35% EBITDA</td></tr>
+<tr><td><b>37signals</b></td><td>Basecamp, HEY, ONCE</td><td>About $80M+ revenue, under 80 people</td></tr>
+<tr><td><b>Tiny</b></td><td>Holding of internet businesses (Dribbble, AeroPress)</td><td>About $300M in sales</td></tr>
+<tr><td><b>Pieter Levels</b></td><td>Portfolio of small products</td><td>About $2.5-3M ARR, no employees</td></tr>
+</table></div><p class=note>Small SaaS at $1-10M ARR usually runs at 20-40% profit and sells for about 3.5-5.5x ARR. Numbers come from web searches and press reports; check them before quoting.</p></div>
 </section>
 
-<section id='aws'>
-<h2>AWS for agent automations <span class='pill p-park'>Parked</span></h2>
-<div class='card'><h3>The idea</h3><p>Cloud infrastructure that runs AI agents and automations for you, so nobody needs a Mac mini running OpenClaw 24/7. Set up every day do X, Y, Z online; it runs on our servers and results come to you.</p></div>
-<div class='card'><h3>Already exists</h3><ul><li>Hosted OpenClaw: OpenClaw Cloud, V2 Cloud, HoopyClaw, or a cheap VPS.</li><li>Developer infra: Modal, E2B, Trigger.dev.</li><li>No-code agents: Lindy, Zapier Agents, Manus, n8n Cloud, Relevance AI.</li><li>Big labs: ChatGPT Scheduled Tasks and Agent Mode, Claude Managed Agents.</li></ul></div>
-<div class='grid'><div class='card'><h3>Pros</h3><ul class='pro'><li>Real pain and recurring revenue.</li><li>Fits our ML and infra background.</li><li>Growing market; can start narrow.</li></ul></div>
-<div class='card'><h3>Cons</h3><ul class='con'><li>Big labs are already there.</li><li>Crowded and generic without a wedge.</li><li>Capital and ops heavy; thin margins.</li><li>Trust and security of logins on our servers.</li></ul></div></div>
-<div class='card'><h3>Verdict</h3><p>Not a standalone product for now. Keep it as the internal infrastructure of the company machine.</p></div>
+<section id=aws><h2>AWS for agent automations</h2><p class=lede>Cloud infrastructure that runs AI agents and automations for you.</p>
+<div class=card><h3>The idea</h3><p>Nobody needs a Mac mini running OpenClaw 24/7. Set up every day do X, Y, Z online; it runs on our servers and the results come to you.</p></div>
+<div class=card><h3>Already exists</h3><ul><li>Hosted OpenClaw: OpenClaw Cloud, V2 Cloud, HoopyClaw, or a cheap VPS.</li><li>Developer infra: Modal, E2B, Trigger.dev.</li><li>No-code agents: Lindy, Zapier Agents, Manus, n8n Cloud, Relevance AI.</li><li>Big labs: ChatGPT Scheduled Tasks and Agent Mode, Claude Managed Agents.</li></ul></div>
+<div class=grid><div class='card pros'><h3>Pros</h3><ul class=pro><li>Real pain and recurring revenue.</li><li>Fits our ML and infra background.</li><li>Growing market; can start narrow.</li></ul></div>
+<div class='card cons'><h3>Cons</h3><ul class=con><li>Big labs are already there.</li><li>Crowded and generic without a wedge.</li><li>Capital and ops heavy; thin margins.</li><li>Trust and security of logins on our servers.</li></ul></div></div>
+<div class=card><h3>Where it fits</h3><p>Not a standalone product for now. Most useful as the internal infrastructure of the company machine.</p></div>
+<div class='card flags'><div class=hd><h3>Red flags from the team</h3><button class='btn lite' data-add=flag data-idea=aws>+ Add</button></div><div data-flags=aws></div></div>
 </section>
 
-<section id='tcc'>
-<h2>The Company Company <span class='pill p-ref'>Reference</span></h2>
-<div class='card'><h3>What they do (from thecompany.company)</h3><ul><li>Tagline: The AI that runs your business. A team plus a company of always-on agents, with shared memory and all your tools, working 24/7.</li><li>The company is shown as departments (Engineering, Product and Design, Go-to-Market, Operations) with named agents working next to humans.</li><li>Agents take tasks like reading 212 replies to a welcome email, writing an onboarding spec, closing the books, refunding a double charge, shipping a checkout; humans review and approve.</li><li>Sold as SaaS: Individual and Teams plans (Pro, Max, Ultra).</li></ul></div>
-<div class='card'><h3>Why it matters to us</h3><ul><li>Validation: a funded team bets that agents can run every department.</li><li>They sell the shovels; we mine. They make money from the platform, we make money from the companies the platform runs.</li><li>We could use tools like this inside our machine instead of building every piece.</li><li>Risk: if our machine gets very good, selling it is tempting, and that puts us back in their market.</li></ul></div>
+<section id=tcc><h2>The Company Company</h2><p class=lede>thecompany.company: an AI layer that runs a business, sold to other companies.</p>
+<div class=card><h3>What they do</h3><ul><li>Tagline: The AI that runs your business. A team plus a company of always-on agents, with shared memory and all your tools, working 24/7.</li><li>The company is shown as departments (Engineering, Product and Design, Go-to-Market, Operations) with named agents working next to humans.</li><li>Agents take tasks like reading 212 replies to a welcome email, writing an onboarding spec, closing the books, refunding a double charge or shipping a checkout; humans review and approve.</li><li>Sold as SaaS: Individual and Teams plans (Pro, Max, Ultra).</li></ul></div>
+<div class=card><h3>Why it matters to us</h3><ul><li>A funded team bets that agents can run every department.</li><li>They sell the shovels; we mine. They make money from the platform, we make money from the companies the platform runs.</li><li>We could use tools like this inside our machine instead of building every piece.</li><li>Risk: if our machine gets very good, selling it is tempting, and that puts us back in their market.</li></ul></div>
+<div class='card flags'><div class=hd><h3>Red flags from the team</h3><button class='btn lite' data-add=flag data-idea=tcc>+ Add</button></div><div data-flags=tcc></div></div>
 </section>
 
-<section id='notes'>
-<h2>Voice notes and thinking</h2>
-<div class='card'><h3>14 Nov, 0:54: big TAM ideas</h3><p>Big-TAM ideas are exactly what the labs go after (a lab shipped something that replaces a Granola-type app). Maybe pick smaller TAMs that are not attractive enough for them.</p></div>
-<div class='card'><h3>14 Nov, 3:27: the Bending Spoons idea</h3><p>Bending Spoons buys companies that stopped growing, keeps the users, rebuilds with far fewer people and raises revenue. Our version: a company factory used internally, not sold. We do the 0 to 1, then AI runs GTM, users and sales. Products can have different names but belong to one company.</p></div>
-<div class='card'><h3>14 Nov, 1:55: how it would work</h3><p>Develop several ideas in parallel and make everything reproducible: a GTM machine, self-healing systems, auto LinkedIn page and daily posts, quick onboarding. Put human time where PMF shows up. Later, with money, buy companies and make them efficient.</p></div>
-<div class='card'><h3>14 Nov, late: The Company Company</h3><p>They sell this layer to companies to make them more efficient. We would build it internally to launch our own companies and make money from them.</p></div>
-<div class='card'><h3>15 Nov: funded, not bootstrapped</h3><p>Many companies make millions in ARR; several of them together can add up to a lot. We are venture-funded, so this is not bootstrapping: a big company of companies, with the products built inside, scaled with one playbook.</p></div>
+<section id=notes><h2>Voice notes and thinking</h2><p class=lede>Where the ideas came from.</p>
+<div class=card><h3>14 Nov &middot; big TAM ideas</h3><p>Big-TAM ideas are exactly what the labs go after (a lab shipped something that replaces a Granola-type app). Maybe pick smaller TAMs that are not attractive enough for them.</p></div>
+<div class=card><h3>14 Nov &middot; the Bending Spoons idea</h3><p>Bending Spoons buys companies that stopped growing, keeps the users, rebuilds with far fewer people and raises revenue. Our version: a company factory used internally, not sold. We do the 0 to 1, then AI runs GTM, users and sales. Products can have different names but belong to one company.</p></div>
+<div class=card><h3>14 Nov &middot; how it would work</h3><p>Develop several ideas in parallel and make everything reproducible: a GTM machine, self-healing systems, an auto LinkedIn page and daily posts, quick onboarding. Put human time where PMF shows up. Later, with money, buy companies and make them efficient.</p></div>
+<div class=card><h3>14 Nov &middot; The Company Company</h3><p>They sell this layer to companies to make them more efficient. We would build it internally to launch our own companies and make money from them.</p></div>
+<div class=card><h3>15 Nov &middot; funded, not bootstrapped</h3><p>Many companies make millions in ARR; several of them together add up to a lot. We are venture-funded, so this is not bootstrapping: a big company of companies, with the products built inside, scaled with one playbook.</p></div>
 </section>
 
-<section id='log'>
-<h2>Updates</h2>
-<div class='card'><ul>
-<li><b>15 Nov 2026:</b> site launched. Thesis reframed as a venture-funded company of companies; added funded comparables and a draft playbook.</li>
-<li><b>14 Nov 2026:</b> added The Company Company as a reference; research on bootstrapped multi-company holdings.</li>
+<section id=inbox><h2>Team inbox</h2><p class=lede>Add ideas, red flags and comments here. Blue checks new entries twice a day, researches them and updates the site.</p>
+<div class=acts style='margin-bottom:14px'><button class=btn data-add=idea>+ Add an idea</button><button class='btn lite' data-add=flag data-idea=cc>Add a red flag</button><button class='btn lite' data-add=note data-idea=cc>Add a comment</button></div>
+<div class=card><h3>Latest</h3><div id=inl><p class=note>Loading&hellip;</p></div></div>
+</section>
+
+<section id=log><h2>Updates</h2><p class=lede>What changed on this site.</p>
+<div class=card><ul>
+<li><b>15 Nov 2026:</b> new design, and a team inbox so Ana and Gohar can add ideas, red flags and comments right here.</li>
+<li><b>15 Nov 2026:</b> site launched on its own link. Thesis reframed as a venture-funded company of companies; added funded examples and a draft playbook.</li>
+<li><b>14 Nov 2026:</b> added The Company Company; research on bootstrapped multi-company holdings.</li>
 <li><b>14 Nov 2026:</b> company factory idea from three voice notes; Bending Spoons research.</li>
 <li><b>14 Nov 2026:</b> first idea: AWS for agent automations.</li>
-</ul><p class='note'>New ideas get their own tab and a row in the Summary table.</p></div>
+</ul></div>
 </section>
 
-</main>
-<footer>Startup ideas, private notes. Numbers from public sources; check before quoting.</footer>
+</main></div>
+<footer>Private notes for Ana and Gohar. Numbers come from public sources; check them before quoting.</footer>
+<div class=modal id=M><div class=card><div class=hd><h3>Add to the ideas site</h3><button class='btn lite x' type=button>Close</button></div><form id=FM><label>What is it?</label><div class=seg><button type=button data-k=idea>New idea</button><button type=button data-k=flag>Red flag</button><button type=button data-k=note>Comment</button></div><label for=SEL>About</label><select id=SEL><option value=new>Something new</option><option value=cc>Company of companies</option><option value=pb>Playbook</option><option value=aws>AWS for agents</option><option value=tcc>The Company Company</option></select><label>From</label><div class=seg><button type=button data-by=Ana>Ana</button><button type=button data-by=Gohar>Gohar</button></div><label for=TX>Details</label><textarea id=TX placeholder='Describe the idea or the risk. A link or a rough note is fine.'></textarea><p class=note>Blue checks new entries twice a day, researches them and updates the site.</p><button class=btn id=BTN>Save</button></form></div></div>
+<div class=toast id=T></div>
 <script>
-var tabs=['sum','cc','pb','comp','aws','tcc','notes','log'];
-function show(t){if(tabs.indexOf(t)<0){t='sum';}
-var s=document.querySelectorAll('section');for(var i=0;i<s.length;i++){s[i].classList.toggle('on',s[i].id===t);}
-var b=document.querySelectorAll('#nav button');for(var j=0;j<b.length;j++){b[j].classList.toggle('on',b[j].getAttribute('data-t')===t);}
-window.scrollTo(0,0);}
-document.addEventListener('click',function(e){var el=e.target.closest('[data-t],[data-go]');if(!el){return;}var t=el.getAttribute('data-t')||el.getAttribute('data-go');location.hash=t;});
-window.addEventListener('hashchange',function(){show(location.hash.slice(1));});
-show(location.hash.slice(1));
+var DB='https://zurich-flats-default-rtdb.europe-west1.firebasedatabase.app/teams/3zBgvWjBXU7CqhvwmP9WfqNx/x';
+var TABS=['sum','cc','pb','comp','aws','tcc','notes','inbox','log'];
+var IDEAS={'new':'Something new',cc:'Company of companies',pb:'Playbook',aws:'AWS for agents',tcc:'The Company Company'};
+var KL={idea:'Idea',flag:'Red flag',note:'Comment'};
+var SL={'new':['s-new','Waiting for Blue'],wip:['s-wip','Blue is on it'],done:['s-done','On the site']};
+var EM={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'};
+var SUBS={},F={k:'idea',by:'Ana'};
+try{F.by=localStorage.getItem('startupIdeas.by')||'Ana'}catch(e){}
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return EM[c]})}
+function when(t){if(!t)return '';var d=new Date(t);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+', '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}
+function toast(m){var t=$('T');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.display='none'},3500)}
+function list(){return Object.keys(SUBS).map(function(k){var s=SUBS[k];return s&&typeof s==='object'?Object.assign({id:k},s):null}).filter(function(s){return s&&s.text}).sort(function(a,b){return (b.t||0)-(a.t||0)})}
+function item(s){var st=SL[s.st]||SL['new'];return "<div class=fl><span class='pill "+st[0]+"'>"+st[1]+'</span> <b>'+esc(KL[s.k]||'Note')+'</b> <span class=note>&middot; '+esc(IDEAS[s.idea]||'General')+'</span><div class=tx>'+esc(s.text)+'</div>'+(s.reply?'<div class=reply>Blue: '+esc(s.reply)+'</div>':'')+'<div class=meta>'+esc(s.by||'Someone')+' &middot; '+when(s.t)+'</div></div>'}
+function draw(){var L=list();$('inl').innerHTML=L.length?L.map(item).join(''):'<p class=note>Nothing yet. Add an idea or a red flag and Blue will research it and put it on the site.</p>';var fs=document.querySelectorAll('[data-flags]');for(var i=0;i<fs.length;i++){var id=fs[i].getAttribute('data-flags');var f=L.filter(function(s){return s.idea===id&&s.k==='flag'});fs[i].innerHTML=f.length?f.map(item).join(''):'<p class=note>No red flags yet.</p>'}var n=L.filter(function(s){return s.st!=='done'}).length;$('icnt').textContent=n;$('icnt').style.display=n?'':'none'}
+function load(){fetch(DB+'.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){SUBS=d&&typeof d==='object'&&!d.error?d:{};draw()}).catch(function(){})}
+function seg(){var a=document.querySelectorAll('[data-k]');for(var i=0;i<a.length;i++)a[i].classList.toggle('on',a[i].getAttribute('data-k')===F.k);var b=document.querySelectorAll('[data-by]');for(var j=0;j<b.length;j++)b[j].classList.toggle('on',b[j].getAttribute('data-by')===F.by)}
+function openF(k,idea){F.k=k||'idea';$('SEL').value=idea||(F.k==='idea'?'new':'cc');seg();$('M').classList.add('on');setTimeout(function(){$('TX').focus()},50)}
+function closeF(){$('M').classList.remove('on')}
+function send(e){e.preventDefault();var txt=$('TX').value.trim();if(!txt){toast('Write something first');return}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,6);var o={k:F.k,idea:$('SEL').value,by:F.by,text:txt,t:Date.now(),st:'new'};var b={};b[id]=o;$('BTN').disabled=true;fetch(DB+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){if(!r.ok)throw new Error('http');SUBS[id]=o;draw();$('TX').value='';closeF();toast('Saved. Blue will research it and update the site.')}).catch(function(){toast('Could not save. Check your connection and try again.')}).then(function(){$('BTN').disabled=false})}
+function show(t){if(TABS.indexOf(t)<0)t='sum';var s=document.querySelectorAll('main section');for(var i=0;i<s.length;i++)s[i].classList.toggle('on',s[i].id===t);var b=document.querySelectorAll('#nav button');for(var j=0;j<b.length;j++){var on=b[j].getAttribute('data-t')===t;b[j].classList.toggle('on',on);if(on&&b[j].scrollIntoView&&window.innerWidth<820)b[j].scrollIntoView({inline:'center',block:'nearest'})}if(window.scrollY>200)window.scrollTo(0,0)}
+document.addEventListener('click',function(e){var el=e.target.closest('[data-add],[data-k],[data-by],[data-t],[data-go],.x');if(!el){if(e.target===$('M'))closeF();return}if(el.hasAttribute('data-add')){openF(el.getAttribute('data-add'),el.getAttribute('data-idea'));return}if(el.hasAttribute('data-k')){F.k=el.getAttribute('data-k');if(F.k==='idea')$('SEL').value='new';seg();return}if(el.hasAttribute('data-by')){F.by=el.getAttribute('data-by');try{localStorage.setItem('startupIdeas.by',F.by)}catch(x){}seg();return}if(el.classList.contains('x')){closeF();return}location.hash=el.getAttribute('data-t')||el.getAttribute('data-go')});
+window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeF()});
+$('FM').addEventListener('submit',send);
+show(location.hash.slice(1));seg();load();setInterval(load,60000);
 </script>
 </body></html>
