@@ -57,6 +57,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 30px}
 <div class=ideas>
 <div class=ic style='--c:var(--cc);--cl:var(--ccl)' data-go=cc><div class=ico>&#9638;</div><h2>Company of companies</h2><p>One venture-funded company that builds and runs many products inside, all on one shared AI company machine.</p><div class=chips><span class=chip>Many products, one cap table</span><span class=chip>Shared AI machine</span><span class=chip>Rippling, Bending Spoons</span></div><div class=ft><span id=hc-cc>No notes yet</span><b>Open &rarr;</b></div></div>
 <div class=ic style='--c:var(--aws);--cl:var(--awsl)' data-go=aws><div class=ico>&#9729;</div><h2>AWS for agent automations</h2><p>Cloud that runs your AI agents and daily automations 24/7, so nobody needs a Mac mini running OpenClaw.</p><div class=chips><span class=chip>Infrastructure</span><span class=chip>Recurring revenue</span><span class=chip>Crowded market</span></div><div class=ft><span id=hc-aws>No notes yet</span><b>Open &rarr;</b></div></div>
+<div class=ic style='--c:#0f766e;--cl:#e6f6f4' data-go=watch><div class=ico>&#128064;</div><h2>Cool ideas to watch</h2><p>Other founders' ideas worth knowing about. Not for us to build, just to stay aware of the space.</p><div class=chips><span class=chip>Awareness only</span><span class=chip>EveryApp (YC F26)</span></div><div class=ft><span>1 idea</span><b>Open &rarr;</b></div></div>
 <div class='ic add' data-add=idea><div class=ico>+</div><h2>New idea</h2><p>Write it in a few lines. Blue researches it and gives it its own page.</p></div>
 </div>
 <div class=secttl><h2>Latest notes</h2><button class='btn sec' data-add=note data-idea=cc>Add a note</button></div>
@@ -183,13 +184,25 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 30px}
 <div class=pane data-p=notes><div class=secttl><h2>Notes</h2><button class=btn data-add=note data-idea=aws>Add a note</button></div><div data-notes=aws></div></div>
 </section>
 
+<section class=view id=v-watch style='--c:#0f766e;--cl:#e6f6f4'>
+<button class=back data-go=home>&larr; All ideas</button>
+<div class=ihead><div class=ico>&#128064;</div><div><h1>Cool ideas to watch</h1><p>Not ours to build. Ideas from other teams that are good to know about.</p></div></div>
+<div class=card><div class=k><h2 style="margin:0 0 4px">EveryApp (YC F26)</h2></div>
+<div class='card hero' style="margin-top:10px">Make every app open source: one platform of open-source business apps that you and your AI agent run in your own Cloudflare account.</div>
+<h3>What it is</h3><ul><li>Open-source apps: OpenSEO, OpenCRM, OpenScribe (AI meeting notes for Mac, a Granola / Wispr Flow alternative), OpenAnalytics, OpenMail. More coming.</li><li>Run one as it is, or fork it as the starting point for your own.</li><li>From the makers of OpenSEO (about 25k GitHub stars, per their site, check before quoting).</li></ul>
+<h3>How it works</h3><ul><li>Every request goes through a Gateway; apps have no public address and sit behind Cloudflare Access. Connect an API once and no app holds your keys.</li><li>Fully serverless on Workers, D1, R2 and KV. An unused app costs $0; Cloudflare's $5/month plan hosts hundreds of apps.</li><li>Standard stack and component library, so your agent builds new apps without inventing patterns.</li></ul>
+<h3>Why it's worth knowing</h3><ul><li>Signal that agents plus open source are unbundling paid SaaS: own the software instead of renting it.</li><li>Close to our <span class=lnk data-go=aws>AWS for agent automations</span> idea (agents running on cheap serverless infra) and to the shared machine in the <span class=lnk data-go=cc>company of companies</span>.</li></ul>
+<h3>Links</h3><ul><li><a href="https://everyapp.com" target=_blank rel=noopener>everyapp.com</a></li><li><a href="https://www.youtube.com/watch?v=krDediTp0MI" target=_blank rel=noopener>Launch video (YC F26, 1:19)</a></li><li><a href="https://github.com/every-app/every-app" target=_blank rel=noopener>GitHub</a></li></ul>
+<p class=note>Added 15 Nov 2026 by Ana</p></div>
+</section>
+
 </main>
 <footer>Private notes for Ana and Gohar &middot; numbers from public sources, check before quoting</footer>
 <div class=modal id=M><div class=card><div class=secttl><h2 id=MT>Add a note</h2><button class='btn sec x' type=button>Close</button></div><form id=FM><div class=seg id=KS><button type=button data-k=note>Note</button><button type=button data-k=idea>New idea</button></div><div id=AB><label for=SEL>About</label><select id=SEL><option value=cc>Company of companies</option><option value=aws>AWS for agent automations</option><option value=new>Something new</option></select></div><label>From</label><div class=seg><button type=button data-by=Ana>Ana</button><button type=button data-by=Gohar>Gohar</button></div><label for=TX>Details</label><textarea id=TX placeholder='A thought, a question, a risk, a link&hellip;'></textarea><p class=note>Blue checks new entries twice a day, researches them and updates the site.</p><button class=btn id=BTN>Save</button></form></div></div>
 <div class=toast id=T></div>
 <script>
 var DB='https://zurich-flats-default-rtdb.europe-west1.firebasedatabase.app/teams/3zBgvWjBXU7CqhvwmP9WfqNx/x';
-var VIEWS={home:1,cc:1,aws:1};
+var VIEWS={home:1,cc:1,aws:1,watch:1};
 var NAMES={cc:'Company of companies',aws:'AWS for agent automations','new':'New idea'};
 var SL={'new':['s-new','Waiting for Blue'],wip:['s-wip','Blue is on it'],done:['s-done','Added to the site']};
 var EM={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'};
