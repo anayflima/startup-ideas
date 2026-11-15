@@ -46,6 +46,7 @@ form label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}select
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;display:none;z-index:60;max-width:90%}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 30px}
 @media(max-width:640px){h1{font-size:27px}.ihead h1{font-size:24px}main{padding:20px 14px 50px}.bar .in{padding:10px 14px}.hide-s{display:none}.card{padding:16px}.tabs{top:51px}}
+details.tg>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px}details.tg>summary::-webkit-details-marker{display:none}details.tg>summary .sm{flex:1;min-width:0}details.tg>summary h2{margin:0;font-size:19px}details.tg>summary .note{margin:4px 0 0}details.tg>summary::after{content:'';flex:none;width:9px;height:9px;border-right:2px solid var(--c,#6b7080);border-bottom:2px solid var(--c,#6b7080);transform:rotate(45deg);transition:transform .2s;margin:0 4px 4px 0}details.tg[open]>summary::after{transform:rotate(-135deg);margin:4px 4px 0 0}details.tg>.tb{margin-top:12px}
 </style></head><body>
 <div class=bar><div class=in><div class=logo data-go=home><i>&#10022;</i>Startup ideas</div><div class=sp></div><button class='btn sec hide-s' data-add=note data-idea=cc>Add a note</button><button class=btn data-add=idea>+ New idea</button></div></div>
 <main>
@@ -190,51 +191,51 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 30px}
 <section class=view id=v-watch style='--c:#0f766e;--cl:#e6f6f4'>
 <button class=back data-go=home>&larr; All ideas</button>
 <div class=ihead><div class=ico>&#128064;</div><div><h1>Cool ideas to watch</h1><p>Not ours to build. Ideas from other teams that are good to know about.</p></div></div>
-<div class=card><div class=k><h2 style="margin:0 0 4px">EveryApp (YC F26)</h2></div>
+<details class='card tg'><summary><div class=sm><h2>EveryApp (YC F26)</h2></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">Make every app open source: one platform of open-source business apps that you and your AI agent run in your own Cloudflare account.</div>
 <h3>What it is</h3><ul><li>Open-source apps: OpenSEO, OpenCRM, OpenScribe (AI meeting notes for Mac, a Granola / Wispr Flow alternative), OpenAnalytics, OpenMail. More coming.</li><li>Run one as it is, or fork it as the starting point for your own.</li><li>From the makers of OpenSEO (about 25k GitHub stars, per their site, check before quoting).</li></ul>
 <h3>How it works</h3><ul><li>Every request goes through a Gateway; apps have no public address and sit behind Cloudflare Access. Connect an API once and no app holds your keys.</li><li>Fully serverless on Workers, D1, R2 and KV. An unused app costs $0; Cloudflare's $5/month plan hosts hundreds of apps.</li><li>Standard stack and component library, so your agent builds new apps without inventing patterns.</li></ul>
 <h3>Why it's worth knowing</h3><ul><li>Signal that agents plus open source are unbundling paid SaaS: own the software instead of renting it.</li><li>Close to our <span class=lnk data-go=aws>AWS for agent automations</span> idea (agents running on cheap serverless infra) and to the shared machine in the <span class=lnk data-go=cc>company of companies</span>.</li></ul>
 <h3>Links</h3><ul><li><a href="https://everyapp.com" target=_blank rel=noopener>everyapp.com</a></li><li><a href="https://www.youtube.com/watch?v=krDediTp0MI" target=_blank rel=noopener>Launch video (YC F26, 1:19)</a></li><li><a href="https://github.com/every-app/every-app" target=_blank rel=noopener>GitHub</a></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
-<div class=card><div class=k><h2 style="margin:0 0 4px">The Company Company</h2></div>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
+<details class='card tg'><summary><div class=sm><h2>The Company Company</h2></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">"The AI that runs your business": a team plus always-on agents with shared memory and all your tools, sold as SaaS.</div>
 <h3>What it is</h3><ul><li>The company is drawn as departments (Engineering, Product, GTM, Operations) with named agents working next to humans.</li><li>Agents read replies to emails, write specs, close the books, refund charges and ship code; humans approve.</li><li>Sold as SaaS: Individual and Teams plans (Pro, Max, Ultra).</li></ul>
 <h3>Why it's worth knowing</h3><ul><li>A funded team betting agents can run every department. It's the closest product to the machine in our <span class=lnk data-go=cc>company of companies</span> idea.</li><li>They sell the shovels (the platform); the opposite of keeping the machine and earning from the companies it runs.</li><li>Tools like this could be used inside a machine instead of building every piece.</li></ul>
 <h3>Links</h3><ul><li><a href="https://thecompany.company" target=_blank rel=noopener>thecompany.company</a></li><li><span class=lnk data-go='cc/tcc'>Our longer notes on it</span></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
-<div class=card><div class=k><h2 style="margin:0 0 4px">Thomas, the first AI founder (YC P26)</h2></div>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
+<details class='card tg'><summary><div class=sm><h2>Thomas, the first AI founder (YC P26)</h2></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">A virtual human (face and voice) that starts, runs and grows its own companies on the internet. Its only goal is to make money. "Thomas is not for sale. His products and services are."</div>
 <h3>What it is</h3><ul><li>Makes money by building and selling niche software, running influencer campaigns end to end, selling qualified leads and taking paid gigs (bounties, data cleanup, landing pages, ads, support queues).</li><li>Core thesis, the "human harness": instead of narrow integrations, give the AI what a person has (identity, phone, inbox, browser, apps). It answers calls and is livestreamed working.</li><li>Master plan: measure every action by cash generated per token spent, then move tokens to the highest-return work.</li><li>Built by Thomas Cloarec ("Human Thomas"), a repeat founder; YC P26, team of 2, Medellín.</li><li>Traction from web snippets: about $40k/month with a human in the loop, about $17k in the first 2 weeks fully autonomous (check before quoting).</li></ul>
 <h3>Why it's worth knowing</h3><ul><li>Same "don't sell the machine, sell what it produces" logic as our <span class=lnk data-go=cc>company of companies</span>, pushed to the extreme with no humans in the loop.</li><li>Proof that YC funds this model. Cash per token is a reusable north-star metric.</li><li>Risk to watch: an AI with a synthetic human face negotiating with people (disclosure rules, platform bans, EU AI Act).</li></ul>
 <h3>Links</h3><ul><li><a href="https://madebythomas.ai" target=_blank rel=noopener>madebythomas.ai</a></li><li><a href="https://www.ycombinator.com/companies?batch=Spring%202026" target=_blank rel=noopener>YC P26 companies</a></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
-<div class=card><div class=k><h2 style="margin:0 0 4px">Grep AI (YC F26)</h2></div>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
+<details class='card tg'><summary><div class=sm><h2>Grep AI (YC F26)</h2></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">Self-improving agents for repetitive work that get smarter and cost less with every run. A managed agent platform for ops work that needs research and judgment.</div>
 <h3>What it is</h3><ul><li>Create an agent in minutes from a prompt and a few docs, no code. Comes with 300+ built-in skills and 100+ data integrations; works with frontier or open-source models (not locked to one provider).</li><li>Used for business due diligence, onboarding, underwriting, document verification, HR ops, GTM ops and competitive research. Customers named: Airwallex, Citizens Bank, Worldpay, Global Payments, Shopmonkey. IG.com automated 80% of onboarding (their claim, check before quoting).</li><li>Founders AJ Asver (led AI/ML products at Coinbase and Brex; first startup Scoopler, YC S08, acquired by Google) and Miguel (led Platform Engineering at Brex, before that data science at Twitter). Started in 2023 as Parcha (compliance agents), expanded into Grep AI in 2026. Team of 6, San Francisco.</li></ul>
 <h3>How it works</h3><ul><li>Self-improving harness: as an agent repeats a task, repeatable steps move out of expensive LLM calls into workflows and code, so each run gets cheaper and more accurate.</li><li>Agents run in a secure sandbox with a file system, audit logs, access controls and cost caps.</li><li>Run them in the app, on schedules and monitors, in batches, or via API, MCP and TypeScript / Python SDKs. A dashboard tracks cost, accuracy and auditability.</li></ul>
 <h3>Why it's worth knowing</h3><ul><li>Their pitch is the unit-economics gap: offshore ops costs $6-12/hour, so a general agent at $4/task loses. Getting cheaper per repeat is the moat.</li><li>Same mechanism we'd want in the shared machine of our <span class=lnk data-go=cc>company of companies</span>: agents that learn a task once and then run it cheaply thousands of times.</li><li>Close to our <span class=lnk data-go=aws>AWS for agent automations</span> idea (managed sandbox, cost caps, many triggers). Could be a tool we use or a competitor.</li></ul>
 <h3>Links</h3><ul><li><a href="https://grep.ai" target=_blank rel=noopener>grep.ai</a></li><li><a href="https://youtu.be/s9NEm6rRcCA" target=_blank rel=noopener>Launch video (YC F26, 1:22)</a></li><li><a href="https://www.ycombinator.com/companies/grep-ai" target=_blank rel=noopener>YC page and launch post</a></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
 </section>
 
 <section class=view id=v-videos style='--c:#b45309;--cl:#fdf2e3'>
 <button class=back data-go=home>&larr; All ideas</button>
 <div class=ihead><div class=ico>&#127909;</div><div><h1>Videos we're watching</h1><p>What we're consuming while we pick the next direction for Pavoot. Not ideas, just inputs.</p></div></div>
-<div class=card><div class=k><h2 style="margin:0 0 4px">How to Conquer Bad Days at Your Startup</h2></div>
-<p class=note>Dalton Caldwell + Michael Seibel (Dalton + Michael, Standard Capital) &middot; 14 min</p>
+<details class='card tg'><summary><div class=sm><h2>How to Conquer Bad Days at Your Startup</h2>
+<p class=note>Dalton Caldwell + Michael Seibel (Dalton + Michael, Standard Capital) &middot; 14 min</p></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">Every founder has crisis days. You get through them by working the problem, not by waiting for them to stop.</div>
 <h3>Key points</h3><ul><li>Write the concrete worst case. Seeing it on paper usually shrinks the panic.</li><li>Feel the disappointment first, then act. Don't decide in the middle of the emotion.</li><li>Bad days don't end when the company grows. The problems just get bigger and more complex.</li></ul>
 <h3>Why it matters for us</h3><ul><li>We're in the middle of a full pivot away from events, which is exactly the kind of stretch with a lot of bad days.</li></ul>
 <h3>Link</h3><ul><li><a href="https://www.youtube.com/watch?v=-7CvPBFz5Xk" target=_blank rel=noopener>Watch on YouTube</a></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
-<div class=card style="margin-top:16px"><div class=k><h2 style="margin:0 0 4px">Should You Pivot Your Startup? (Avoiding Pivot Hell)</h2></div>
-<p class=note>Dalton Caldwell + Michael Seibel (Dalton + Michael, Standard Capital) &middot; 24 min</p>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
+<details class='card tg'><summary><div class=sm><h2>Should You Pivot Your Startup? (Avoiding Pivot Hell)</h2>
+<p class=note>Dalton Caldwell + Michael Seibel (Dalton + Michael, Standard Capital) &middot; 24 min</p></div></summary><div class=tb>
 <div class='card hero' style="margin-top:10px">Pivoting is easier than ever, which makes it easy to fall into pivot hell. Be honest about whether you really need a pivot.</div>
 <h3>Key points</h3><ul><li>How to tell an idea that lacks traction from one that just needs more work.</li><li>Pivot hell: jumping between ideas without ever giving one a real shot.</li><li>When you do pivot, move toward real demand and product-market fit, not toward the next shiny idea.</li></ul>
 <h3>Why it matters for us</h3><ul><li>We're leaving events because event buyers are poor buyers. This is a good check before we commit to the <span class=lnk data-go=cc>company of companies</span> or <span class=lnk data-go=aws>AWS for agents</span>.</li></ul>
 <h3>Link</h3><ul><li><a href="https://www.youtube.com/watch?v=yGqJrVvuyaM" target=_blank rel=noopener>Watch on YouTube</a></li></ul>
-<p class=note>Added 15 Nov 2026 by Ana</p></div>
+<p class=note>Added 15 Nov 2026 by Ana</p></div></details>
 </section>
 
 </main>

@@ -16,6 +16,7 @@ blockquote{margin:6px 0;padding:8px 12px;border-left:3px solid #a5b4fc;backgroun
 .ch a{color:var(--ink);text-decoration:none}.ch a b{color:var(--accent);font-weight:600;margin-right:6px}
 .thumb{width:100%;border-radius:12px;display:block;margin-bottom:12px}
 footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
+details.tg>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px}details.tg>summary::-webkit-details-marker{display:none}details.tg>summary .sm{flex:1;min-width:0}details.tg>summary .meta{margin-bottom:0}details.tg>summary::after{content:'';flex:none;width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;margin:0 4px 4px 0}details.tg[open]>summary::after{transform:rotate(-135deg);margin:4px 4px 0 0}details.tg>.tb{margin-top:12px}
 </style></head><body>
 <header><h1>Watched & consumed</h1><p>Videos, talks, articles and books I went through, with what I took from each.</p></header>
 <main>
@@ -34,15 +35,16 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 const secs=t=>t.split(':').reduce((a,b)=>a*60+ +b,0);
 let tag='';
 function card(it){
- let h='<div class="card" id="'+it.id+'">';
- if(it.yt)h+='<a href="'+it.url+'" target="_blank"><img class="thumb" src="https://i.ytimg.com/vi/'+it.yt+'/hqdefault.jpg" alt=""></a>';
+ let h='<details class="card tg" id="'+it.id+'"'+((location.hash.slice(1)===it.id||document.getElementById('q').value.trim())?' open':'')+'><summary><div class="sm">';
  h+='<h2>'+esc(it.title)+'</h2><div class="meta">'+it.type+' · '+esc(it.by)+(it.length?' · '+it.length:'')+(it.status==='to-watch'?' · <b style=color:#ea580c>TO WATCH</b> · saved '+it.consumed:' · consumed '+it.consumed)+' · <a href="'+it.url+'" target="_blank">open</a></div>';
+ h+='</div></summary><div class="tb">';
+ if(it.yt)h+='<a href="'+it.url+'" target="_blank"><img class="thumb" src="https://i.ytimg.com/vi/'+it.yt+'/hqdefault.jpg" alt=""></a>';
  h+='<div class="tags">'+it.tags.map(t=>'<span>'+t+'</span>').join('')+'</div>';
  if(it.mine&&it.mine.length)h+='<h3>My takeaways</h3><div class="mine"><ul>'+it.mine.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>';
  h+='<h3>Key learnings</h3><ul>'+it.learnings.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
  if(it.quotes)h+='<h3>Quotes</h3>'+it.quotes.map(q=>'<blockquote>'+esc(q)+'</blockquote>').join('');
  if(it.chapters)h+='<h3>Chapters</h3><ul class="ch">'+it.chapters.map(c=>'<li><a target="_blank" href="'+it.url+'&t='+secs(c[0])+'s"><b>'+c[0]+'</b>'+esc(c[1])+'</a></li>').join('')+'</ul>';
- return h+'</div>';
+ return h+'</div></details>';
 }
 function render(){
  const q=document.getElementById('q').value.toLowerCase();
