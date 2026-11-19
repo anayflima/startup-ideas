@@ -90,3 +90,24 @@ nav.bn button.on{color:var(--tx)}nav.bn button.on i{filter:none;opacity:1}
 .empty{text-align:center;color:var(--mut);padding:30px 10px}
 .kv{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.kv:last-child{border:0}
 a{color:#a5b4fc}
+#dayv{scroll-margin-top:140px}
+.dvh{display:flex;gap:6px;margin:0 0 8px 44px}
+.dvc{flex:1;min-width:0;text-align:center;font-size:13px;background:var(--card2);border-radius:12px;padding:6px 4px}
+.dvc .av{width:22px;height:22px;font-size:11px}
+.dvoff{margin-top:4px;font-size:11px;border:1px dashed var(--c);border-radius:8px;padding:3px 6px}
+.dvs{max-height:62vh;overflow-y:auto;position:relative;border-top:1px solid var(--line);-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.dvb{position:relative;margin-left:44px}
+.dvl{position:absolute;left:-44px;right:0;border-top:1px solid #2a2d48}
+.dvl span{position:absolute;left:0;top:-7px;width:38px;text-align:right;font-size:10px;color:var(--mut);font-variant-numeric:tabular-nums}
+.dvl:first-child span{top:1px}
+.dvcols{position:absolute;inset:0;display:flex;gap:6px}
+.dvcol{flex:1;position:relative;min-width:0}
+.dvoffcol{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 8px,#ffffff08 8px 16px);border:1px dashed var(--c);border-radius:8px;opacity:.6}
+.blk{position:absolute;background:var(--c);color:#fff;border-radius:7px;padding:3px 6px;font-size:11px;line-height:1.25;overflow:hidden;cursor:pointer;box-shadow:0 2px 6px #0006,inset 3px 0 0 #00000033;z-index:1;box-sizing:border-box}
+.blk b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.blk span{display:block;font-size:10px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk.sm{padding:1px 5px}.blk.sm span{display:none}
+.blk.run{background-image:repeating-linear-gradient(45deg,#ffffff00 0 7px,#ffffff26 7px 14px)}
+.blk:not([data-act]){cursor:default}
+.nowl{position:absolute;left:0;right:0;height:2px;background:#f43f5e;z-index:3;pointer-events:none}
+.nowl:before{content:'';position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:#f43f5e}
