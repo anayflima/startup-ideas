@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private var web: WKWebView!
-    private let bg = UIColor(red: 12/255, green: 13/255, blue: 24/255, alpha: 1)
+    private let bg = UIColor(red: 6/255, green: 20/255, blue: 24/255, alpha: 1)
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
