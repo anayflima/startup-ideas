@@ -173,3 +173,4 @@ nav.bn button.on{color:var(--tx)}nav.bn button.on i{background:#24bdbb2e;color:v
 .empty{padding:40px 16px;font-size:15px;line-height:1.6}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* v6 timer bar fits narrow phones */.tbar{gap:8px;padding:8px 8px 8px 16px}.tbar input{font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}#tclock{font-size:18px;flex:none}#tbtn{width:54px;height:54px}@media(min-width:640px){.tbar{gap:10px;padding:10px 10px 10px 20px}.tbar input{font-size:17px}#tclock{font-size:22px}#tbtn{width:60px;height:60px}}
