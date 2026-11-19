@@ -1,5 +1,7 @@
 name: Publish bundle
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       url:
@@ -21,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unpack bundle
+        if: github.event_name == 'workflow_dispatch'
         env:
           SRC: ${{ inputs.url }}
           MSG: ${{ inputs.message }}
