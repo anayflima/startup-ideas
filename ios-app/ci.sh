@@ -4,6 +4,9 @@
 # upload=true: archives, signs automatically with the App Store Connect API key and uploads to TestFlight.
 set -euo pipefail
 cd "$(dirname "$0")"
+# Apple requires the iOS 26 SDK (Xcode 26+) for App Store Connect uploads: use the newest Xcode on the runner.
+XC="$(ls -d /Applications/Xcode_2[6-9]*.app /Applications/Xcode-2[6-9]*.app 2>/dev/null | sort -V | tail -n 1 || true)"
+if [ -n "$XC" ]; then sudo xcode-select -s "$XC/Contents/Developer"; else echo "No Xcode 26+ on this runner:"; ls -d /Applications/Xcode*.app; fi
 command -v xcodegen >/dev/null || brew install xcodegen
 xcodegen generate
 xcodebuild -version
