@@ -174,3 +174,27 @@ nav.bn button.on{color:var(--tx)}nav.bn button.on i{background:#24bdbb2e;color:v
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* v6 timer bar fits narrow phones */.tbar{gap:8px;padding:8px 8px 8px 16px}.tbar input{font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}#tclock{font-size:18px;flex:none}#tbtn{width:54px;height:54px}@media(min-width:640px){.tbar{gap:10px;padding:10px 10px 10px 20px}.tbar input{font-size:17px}#tclock{font-size:22px}#tbtn{width:60px;height:60px}}
+/* not work (v8) */
+.tk{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:56px;height:52px;margin-left:-10px;border-radius:18px;border:1px solid var(--line);background:var(--s2);font-size:19px;line-height:1;color:var(--tx);cursor:pointer;padding:0}
+.tk small{font-size:9px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+.tbar.nw .tk{border-color:#f4b67888;background:#f4b67822}
+.tbar.nw .tk small{color:#f4b678}
+.tbar.nw.run{border-color:#f4b67877;background:linear-gradient(135deg,#33281a,#211b14);box-shadow:0 12px 32px #f4b67822}
+.tbar.nw.run #tbtn{background:linear-gradient(135deg,#f4b678,#f7d9a8)}
+.chips{display:block;overflow:visible;padding:8px 2px 2px}
+.chrow{display:flex;gap:8px;overflow-x:auto;align-items:center;scrollbar-width:none;padding:4px 0}
+.chrow::-webkit-scrollbar{display:none}
+.chl{min-width:62px}
+.chl.nwl{color:#f4b678}
+.chip.nwc{border-color:#f4b67855}
+.chip.nwc i{background:#f4b67826;color:#f4b678;font-size:17px}
+.chip.back{border-color:#24bdbb}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#f4b678;background:#f4b6781f;border-radius:6px;padding:1px 6px;margin-right:2px;vertical-align:1px}
+.nwt{color:#f4b678;font-size:11px;font-weight:600}
+.nwsum{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding:10px 14px;border-radius:14px;background:#f4b67814;border:1px solid #f4b67833;color:#f4b678;font-size:14px}
+.nwsum b{color:var(--tx)}
+.nwn{font-size:11px;color:var(--mut);margin:4px 2px 8px}
+.mc label.ck{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--tx);margin:2px 0 12px;cursor:pointer}
+.mc label.ck input{width:22px;height:22px;min-height:0;margin:0;flex:none;accent-color:#f4b678}
+.blk.nw{color:#2a1d0c;background-image:repeating-linear-gradient(135deg,#ffffff00 0 6px,#ffffff40 6px 12px)}
+.nwcard h2{color:#f4b678}
