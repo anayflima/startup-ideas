@@ -153,7 +153,17 @@ final class Core {
             long a = Math.max(x.s, sod), b = Math.min(x.e, now);
             if (b > a) today += b - a;
         }
+        JSONArray recent = new JSONArray();
+        Set<String> rs = new HashSet<>();
+        if (r != null) rs.add((r.p ? "p:" : "w:") + r.n.toLowerCase());
+        for (int i = mine.size() - 1; i >= 0 && recent.length() < 6; i--) {
+            E x = mine.get(i);
+            if (x.e == 0 || x.n.isEmpty()) continue;
+            if (!rs.add((x.p ? "p:" : "w:") + x.n.toLowerCase())) continue;
+            recent.put(new JSONObject().put("n", x.n).put("p", x.p));
+        }
         JSONObject o = new JSONObject();
+        o.put("recent", recent);
         if (r != null) o.put("running", new JSONObject().put("n", r.n).put("s", r.s).put("p", r.p));
         o.put("sugg", sugg);
         if (last != null) o.put("last", new JSONObject().put("n", last.n).put("p", last.p));

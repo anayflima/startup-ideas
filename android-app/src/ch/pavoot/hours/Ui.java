@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.RemoteViews;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 /** The ongoing "timer running" notification (status bar chip / lock screen), the home-screen widget and the tile. */
 final class Ui {
@@ -38,6 +40,28 @@ final class Ui {
     static String label(String n) { return n == null || n.isEmpty() ? "No description" : n; }
 
     static String hm(long ms) { long m = Math.max(0, ms) / 60000; return (m / 60) + "h " + String.format("%02d", m % 60) + "m"; }
+
+    static boolean isMeal(JSONObject x) { return x != null && x.optBoolean("p") && x.optString("n").equalsIgnoreCase("meal"); }
+
+    /** [0] Continue (last topic, only when nothing runs), [1] Most recent other topic, [2] Meal (or the next recent topic when Meal is already taken). */
+    static JSONObject[] pick(JSONObject s) {
+        JSONObject r = s == null ? null : s.optJSONObject("running");
+        JSONArray rc = s == null ? null : s.optJSONArray("recent");
+        List<JSONObject> l = new ArrayList<>();
+        if (rc != null) for (int i = 0; i < rc.length(); i++) { JSONObject x = rc.optJSONObject(i); if (x != null) l.add(x); }
+        JSONObject cont = null, recent = null, third = null;
+        if (r == null && !l.isEmpty()) cont = l.remove(0);
+        boolean mealTaken = isMeal(r) || isMeal(cont);
+        for (JSONObject x : l) {
+            if (!mealTaken && isMeal(x)) continue;
+            if (recent == null) recent = x;
+            else if (mealTaken && third == null) third = x;
+        }
+        if (!mealTaken) { try { third = new JSONObject().put("n", "Meal").put("p", true); } catch (Exception e) { } }
+        return new JSONObject[]{cont, recent, third};
+    }
+
+    static String chip(JSONObject x) { return (x.optBoolean("p") ? "☕ " : "▶ ") + label(x.optString("n")); }
 
     static void update(Context c, JSONObject s) {
         try { notif(c, s); } catch (Exception e) { }
@@ -73,18 +97,9 @@ final class Ui {
                 .setContentIntent(openApp(c));
         Icon ic = Icon.createWithResource(c, R.drawable.ic_stat);
         b.addAction(new Notification.Action.Builder(ic, "■ Stop", act(c, "stop", null, false, 1)).build());
-        RemoteInput ri = new RemoteInput.Builder("topic").setLabel("New topic").build();
-        Intent ti = new Intent(c, ActionReceiver.class).setAction("ch.pavoot.hours.start").putExtra("nw", false);
-        PendingIntent tp = PendingIntent.getBroadcast(c, 2, ti,
-                PendingIntent.FLAG_UPDATE_CURRENT | (Build.VERSION.SDK_INT >= 31 ? PendingIntent.FLAG_MUTABLE : 0));
-        b.addAction(new Notification.Action.Builder(ic, "✏️ New topic", tp).addRemoteInput(ri).build());
-        JSONArray sg = s.optJSONArray("sugg");
-        if (sg != null && sg.length() > 0) {
-            JSONObject x = sg.getJSONObject(0);
-            boolean xp = x.optBoolean("p");
-            b.addAction(new Notification.Action.Builder(ic, (xp ? "☕ " : "▶ ") + x.optString("n"),
-                    act(c, "start", x.optString("n"), xp, 3)).build());
-        }
+        JSONObject[] pk = pick(s);
+        if (pk[1] != null) b.addAction(new Notification.Action.Builder(ic, chip(pk[1]), act(c, "start", pk[1].optString("n"), pk[1].optBoolean("p"), 3)).build());
+        if (pk[2] != null) b.addAction(new Notification.Action.Builder(ic, chip(pk[2]), act(c, "start", pk[2].optString("n"), pk[2].optBoolean("p"), 4)).build());
         // Android 16 Live Update: promoted ongoing notification = status bar chip with the running time.
         Bundle ex = new Bundle();
         ex.putBoolean("android.requestPromotedOngoing", true);
@@ -141,23 +156,23 @@ final class Ui {
             v.setViewVisibility(R.id.w_todayc, View.GONE);
             v.setViewVisibility(R.id.w_today, View.VISIBLE);
             v.setTextViewText(R.id.w_today, "Today " + hm(s == null ? 0 : s.optLong("today")));
-            JSONObject l = s == null ? null : s.optJSONObject("last");
+            JSONObject l = pick(s)[0];
             String ln = l == null ? "" : l.optString("n");
             boolean lp = l != null && l.optBoolean("p");
-            v.setTextViewText(R.id.w_main, "▶  " + (ln.isEmpty() ? "Start" : ln));
+            v.setTextViewText(R.id.w_main, l == null ? "▶  Start" : "▶  Continue " + label(ln));
             v.setTextColor(R.id.w_main, lp ? NW : TEAL);
             v.setInt(R.id.w_main, "setBackgroundResource", lp ? R.drawable.pill_nw : R.drawable.pill_teal);
             v.setOnClickPendingIntent(R.id.w_main, signed ? act(c, "start", ln, lp, 10) : openApp(c));
         }
-        v.setTextViewText(R.id.w_sl, r == null ? "START" : "SWITCH TO");
+        v.setTextViewText(R.id.w_sl, r == null ? "OR START" : "SWITCH TO");
+        JSONObject[] pk = pick(s);
         int[] ids = {R.id.w_s1, R.id.w_s2, R.id.w_s3};
-        JSONArray sg = s == null ? null : s.optJSONArray("sugg");
         for (int i = 0; i < 3; i++) {
-            JSONObject x = (!signed || sg == null || i >= sg.length()) ? null : sg.optJSONObject(i);
-            if (x == null) { v.setViewVisibility(ids[i], View.INVISIBLE); continue; }
+            JSONObject x = (!signed || i == 2) ? null : pk[i + 1];
+            if (x == null) { v.setViewVisibility(ids[i], i == 2 ? View.GONE : View.INVISIBLE); continue; }
             boolean p = x.optBoolean("p");
             v.setViewVisibility(ids[i], View.VISIBLE);
-            v.setTextViewText(ids[i], (p ? "☕ " : "▶ ") + x.optString("n"));
+            v.setTextViewText(ids[i], chip(x));
             v.setTextColor(ids[i], p ? NW : TEAL);
             v.setInt(ids[i], "setBackgroundResource", p ? R.drawable.pill_nw : R.drawable.pill_teal);
             v.setOnClickPendingIntent(ids[i], act(c, "start", x.optString("n"), p, 11 + i));
