@@ -30,6 +30,8 @@ struct HoursActivity: ActivityAttributes {
         var s: Date
         var p: Bool
         var sugg: [Sugg]
+        var today: Date?    // working: counts up from here = today's total work, live
+        var todayH: Double? // on a break: today's finished work (static)
     }
     var who: String
 }
@@ -39,6 +41,15 @@ func hm(_ sec: Double) -> String {
     return "\(m / 60)h " + String(format: "%02d", m % 60) + "m"
 }
 func kindIcon(_ p: Bool) -> String { p ? "cup.and.saucer.fill" : "briefcase.fill" }
+
+/// While a WORK timer runs: the date a counting-up timer must start from to show today's total work
+/// (finished work today + the running part since midnight). nil when nothing or not-work is running.
+func todayRef(_ s: Snap) -> Date? {
+    guard let r = s.running, !r.p else { return nil }
+    let base = s.updated > Date.distantPast ? s.updated : Date()
+    let sod = Calendar.current.startOfDay(for: base)
+    return max(r.s, sod).addingTimeInterval(-s.todayWork)
+}
 
 enum Store {
     private static let service = "ch.pavoot.hours.shared"

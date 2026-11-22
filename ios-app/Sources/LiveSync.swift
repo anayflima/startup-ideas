@@ -10,7 +10,8 @@ enum LiveSync {
             for a in acts { await a.end(nil, dismissalPolicy: .immediate) }
             return
         }
-        let st = HoursActivity.ContentState(n: r.n, s: r.s, p: r.p, sugg: Array(s.sugg.prefix(3)))
+        let st = HoursActivity.ContentState(n: r.n, s: r.s, p: r.p, sugg: Array(s.sugg.prefix(3)),
+                                                    today: todayRef(s), todayH: s.todayWork)
         if let a = acts.first {
             if a.content.state != st { await a.update(ActivityContent(state: st, staleDate: nil)) }
             for x in acts.dropFirst() { await x.end(nil, dismissalPolicy: .immediate) }

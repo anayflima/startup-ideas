@@ -30,6 +30,18 @@ func pill(_ t: String, _ img: String, _ c: Color) -> some View {
 
 func topicText(_ n: String) -> String { n.isEmpty ? "No description" : n }
 
+/// "Today 10:03:21" ticking live while working, "Today 10h 03m" otherwise.
+func todayText(_ s: Snap) -> Text {
+    if let ref = todayRef(s) { return Text("Today ") + Text(ref, style: .timer) }
+    return Text("Today " + hm(s.todayWork))
+}
+
+func todayLA(_ st: HoursActivity.ContentState) -> Text {
+    if let ref = st.today { return Text("Today ") + Text(ref, style: .timer) }
+    if let h = st.todayH { return Text("Today " + hm(h) + " work") }
+    return Text("")
+}
+
 // MARK: Home + Lock Screen widget
 
 struct HEntry: TimelineEntry {
@@ -103,13 +115,13 @@ struct StatusView: View {
         HStack(spacing: 6) {
             VStack(alignment: .leading, spacing: 0) {
                 if let r = run {
-                    Label(r.p ? "Not work" : "Working", systemImage: kindIcon(r.p)).font(.caption2).widgetAccentable()
+                    (Text(Image(systemName: kindIcon(r.p))) + Text(" ") + todayText(e.snap)).font(.caption2).monospacedDigit().widgetAccentable()
                     Text(topicText(r.n)).font(.headline).lineLimit(1)
                     Text(r.s, style: .timer).font(.system(.body, design: .rounded).weight(.semibold)).monospacedDigit()
                 } else {
                     Label("Pavoot Hours", systemImage: "timer").font(.caption2).widgetAccentable()
                     Text(e.signedIn ? "Not tracking" : "Sign in in the app").font(.headline).lineLimit(1)
-                    Text("Today " + hm(e.snap.todayWork)).font(.caption)
+                    todayText(e.snap).font(.caption)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -134,9 +146,11 @@ struct StatusView: View {
             Text(topicText(r.n)).font(.system(size: 15, weight: .semibold)).foregroundStyle(.white).lineLimit(2)
             Text(r.s, style: .timer).font(.system(size: 26, weight: .bold, design: .rounded)).monospacedDigit()
                 .foregroundStyle(.white).lineLimit(1).minimumScaleFactor(0.6)
+            todayText(e.snap).font(.system(size: 13, weight: .semibold)).monospacedDigit()
+                .foregroundStyle(.white.opacity(0.7)).lineLimit(1)
         } else {
             Text(e.signedIn ? "Not tracking" : "Open the app to sign in").font(.system(size: 15, weight: .semibold)).foregroundStyle(.white).lineLimit(2)
-            Text("Today " + hm(e.snap.todayWork)).font(.system(size: 13)).foregroundStyle(.white.opacity(0.6))
+            todayText(e.snap).font(.system(size: 13)).foregroundStyle(.white.opacity(0.6))
         }
     }
 
@@ -227,6 +241,7 @@ struct LockView: View {
                 Text(st.s, style: .timer).font(.system(size: 28, weight: .bold, design: .rounded)).monospacedDigit()
                     .foregroundStyle(.white).multilineTextAlignment(.trailing).frame(maxWidth: 130, alignment: .trailing)
             }
+            todayLA(st).font(.caption.weight(.semibold)).monospacedDigit().foregroundStyle(.white.opacity(0.7))
             ActionRow(st: st, limit: 3)
         }
         .padding(14)
@@ -251,7 +266,10 @@ struct HoursLiveActivity: Widget {
                         .multilineTextAlignment(.trailing).frame(maxWidth: 96, alignment: .trailing)
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(topicText(st.n)).font(.headline).lineLimit(1)
+                    VStack(spacing: 2) {
+                        Text(topicText(st.n)).font(.headline).lineLimit(1)
+                        todayLA(st).font(.caption2).monospacedDigit().foregroundStyle(.secondary)
+                    }
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     ActionRow(st: st, limit: 2)

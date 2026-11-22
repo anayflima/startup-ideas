@@ -109,10 +109,23 @@ final class Ui {
             v.setTextViewText(R.id.w_head, p ? "☕ NOT WORK" : "💼 WORKING");
             v.setTextColor(R.id.w_head, p ? NW : TEAL);
             v.setTextViewText(R.id.w_topic, label(r.optString("n")));
+            v.setInt(R.id.w_topic, "setMaxLines", 1);
             long st = r.optLong("s");
             v.setChronometer(R.id.w_chrono, SystemClock.elapsedRealtime() - (System.currentTimeMillis() - st), null, true);
             v.setViewVisibility(R.id.w_chrono, View.VISIBLE);
-            v.setViewVisibility(R.id.w_today, View.GONE);
+            // Today's total work: finished entries today + the running work timer (live, ticks every second).
+            long tc = s.optLong("today"), nowMs = System.currentTimeMillis();
+            if (!p) {
+                long tot = tc + Math.max(0, nowMs - Math.max(st, Core.sod(nowMs)));
+                v.setChronometer(R.id.w_todayc, SystemClock.elapsedRealtime() - tot, "Today %s", true);
+                v.setViewVisibility(R.id.w_todayc, View.VISIBLE);
+                v.setViewVisibility(R.id.w_today, View.GONE);
+            } else {
+                v.setChronometer(R.id.w_todayc, SystemClock.elapsedRealtime(), null, false);
+                v.setViewVisibility(R.id.w_todayc, View.GONE);
+                v.setViewVisibility(R.id.w_today, View.VISIBLE);
+                v.setTextViewText(R.id.w_today, "Today " + hm(tc) + " work");
+            }
             v.setTextViewText(R.id.w_main, "■  Stop");
             v.setTextColor(R.id.w_main, STOP);
             v.setInt(R.id.w_main, "setBackgroundResource", R.drawable.pill_stop);
@@ -121,8 +134,11 @@ final class Ui {
             v.setTextViewText(R.id.w_head, "⏱ PAVOOT HOURS");
             v.setTextColor(R.id.w_head, 0x99ffffff);
             v.setTextViewText(R.id.w_topic, signed ? "Not tracking" : "Open the app to sign in");
+            v.setInt(R.id.w_topic, "setMaxLines", 2);
             v.setChronometer(R.id.w_chrono, SystemClock.elapsedRealtime(), null, false);
             v.setViewVisibility(R.id.w_chrono, View.GONE);
+            v.setChronometer(R.id.w_todayc, SystemClock.elapsedRealtime(), null, false);
+            v.setViewVisibility(R.id.w_todayc, View.GONE);
             v.setViewVisibility(R.id.w_today, View.VISIBLE);
             v.setTextViewText(R.id.w_today, "Today " + hm(s == null ? 0 : s.optLong("today")));
             JSONObject l = s == null ? null : s.optJSONObject("last");

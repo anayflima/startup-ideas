@@ -97,6 +97,13 @@ final class Core {
 
     static final class E { String n; long s, e; boolean p; }
 
+    static long sod(long t) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(t);
+        c.set(Calendar.HOUR_OF_DAY, 0); c.set(Calendar.MINUTE, 0); c.set(Calendar.SECOND, 0); c.set(Calendar.MILLISECOND, 0);
+        return c.getTimeInMillis();
+    }
+
     static JSONObject build(JSONObject d) throws Exception {
         String me = String.valueOf(d.opt("me"));
         JSONArray es = d.optJSONArray("entries");
