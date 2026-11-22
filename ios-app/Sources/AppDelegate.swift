@@ -8,15 +8,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Actions.onApply = { s in await LiveSync.sync(s) }
         let w = UIWindow(frame: UIScreen.main.bounds)
         w.rootViewController = WebViewController()
         w.makeKeyAndVisible()
         window = w
         return true
     }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        Task {
+            if let s = await Actions.fetch() {
+                Actions.reloadWidgets()
+                await LiveSync.sync(s)
+            }
+        }
+    }
 }
 
-final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     private var web: WKWebView!
     private let bg = UIColor(red: 6/255, green: 20/255, blue: 24/255, alpha: 1)
 
@@ -25,7 +35,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     override func loadView() {
         let cfg = WKWebViewConfiguration()
         cfg.websiteDataStore = .default()
-        cfg.applicationNameForUserAgent = "PavootHoursApp/1.0 (iOS)"
+        cfg.applicationNameForUserAgent = "PavootHoursApp/1.1 (iOS)"
+        cfg.userContentController.add(self, name: "hours")
         web = WKWebView(frame: .zero, configuration: cfg)
         web.navigationDelegate = self
         web.uiDelegate = self
@@ -44,6 +55,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         web.load(URLRequest(url: homeURL))
+        NotificationCenter.default.addObserver(forName: .hoursChanged, object: nil, queue: .main) { [weak self] _ in
+            self?.web.evaluateJavaScript("typeof refresh==='function'&&refresh()", completionHandler: nil)
+        }
     }
 
     @objc private func pullToRefresh() {
@@ -80,6 +94,16 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             self?.web.load(URLRequest(url: homeURL))
         })
         present(a, animated: true)
+    }
+
+    // MARK: bridge from the web app (sign-in key + timer state) for the widgets and the Live Activity
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let b = message.body as? [String: Any] else { return }
+        if (b["signout"] as? Bool) == true { Task { await Actions.signOut() }; return }
+        if let k = b["key"] as? String, !k.isEmpty, Store.key != k { Store.key = k }
+        guard let st = b["state"] as? String, let data = st.data(using: .utf8),
+              let o = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else { return }
+        Task { await Actions.apply(o) }
     }
 
     // MARK: JavaScript dialogs (confirm() is used for delete / sign out)

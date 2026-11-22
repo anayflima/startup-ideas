@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Pill">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">30dp</item>
+    <item name="android:layout_marginTop">5dp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">#24bdbb</item>
+    <item name="android:background">@drawable/pill_teal</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:ellipsize">end</item>
+    <item name="android:paddingLeft">8dp</item>
+    <item name="android:paddingRight">8dp</item>
+  </style>
+</resources>
