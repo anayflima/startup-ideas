@@ -198,3 +198,5 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .mc label.ck input{width:22px;height:22px;min-height:0;margin:0;flex:none;accent-color:#f4b678}
 .blk.nw{color:#2a1d0c;background-image:repeating-linear-gradient(135deg,#ffffff00 0 6px,#ffffff40 6px 12px)}
 .nwcard h2{color:#f4b678}
+
+.saldo{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 8px;margin-top:10px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px}.saldo b{font-size:16px}.saldo small{flex-basis:100%;text-align:center;font-size:11px;color:var(--mut)}
